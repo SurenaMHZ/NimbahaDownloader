@@ -1,0 +1,50 @@
+.my-toast {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: #1f2937;
+  color: #fff;
+  padding: 14px 20px;
+  border-radius: 12px;
+  font-size: 14px;
+  font-family: sans-serif;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.4s ease;
+  z-index: 999999;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.3);
+  max-width: 320px;
+}
+
+.my-toast.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.my-toast-msg {
+  margin-bottom: 8px;
+  font-size: 13px;
+  line-height: 1.5;
+  word-break: break-word;
+}
+
+.my-toast-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 6px;
+}
+
+.my-toast-actions button {
+  background: #374151;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 6px;
+  font-size: 12px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.my-toast-actions button:hover {
+  background: #4b5563;
+}

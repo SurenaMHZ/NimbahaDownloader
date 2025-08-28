@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <script src="popup.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+      html, body {
+        width: 360px; 
+        height: 400px;
+        margin: 0;
+        padding: 0;
+        }
+        :root {
+            --background-color: #111827;   /* پس‌زمینه تیره‌تر */
+            --text-color: #f3f4f6;         /* متن روشن‌تر */
+            --card-background: #1f2937;    /* کارت کمی روشن‌تر از بک‌گراند */
+            --border-color: #374151;       /* خطوط ملایم */
+            --shadow-color: rgba(0, 0, 0, 0.25);
+            --popup-bg: #1e1e1e;
+            --popup-text: #f9fafb;
+            --btn-secondary-bg: #374151;
+            --btn-secondary-hover-bg: #4b5563;
+            --primary-color: #0f172a;      /* هدر تاریک */
+            --secondary-color: #3b82f6;    /* آبی مینیمال */
+            --success-color: #10b981;
+            --error-color: #ef4444;
+        }
+    
+        * {
+            margin: 0; padding: 0;
+            box-sizing: border-box;
+            font-family: 'Vazirmatn', 'Tahoma', sans-serif;
+        }
+    
+        body {
+            background-color: var(--background-color);
+            color: var(--text-color);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            text-align: right;
+            line-height: 1.8;
+        }
+    
+        header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 1.2rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-direction: row-reverse;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.4);
+            border-bottom: 1px solid var(--border-color);
+        }
+    
+        .container {
+            width: 90%;
+            max-width: 1100px;
+            margin: 0 auto;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 2rem 0;
+            gap: 2rem;
+        }
+    
+        .hero {
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+    
+        .hero h1 {
+            font-size: 2.4rem;
+            font-weight: 700;
+            margin-bottom: 0.8rem;
+            color: var(--secondary-color);
+            animation: fadeIn 0.8s ease-out;
+        }
+    
+        .card {
+            background-color: var(--card-background);
+            border-radius: 1rem;
+            box-shadow: 0 6px 14px var(--shadow-color);
+            padding: 2rem;
+            margin-bottom: 1.5rem;
+            animation: slideUp 0.5s ease-out;
+            transition: transform 0.25s, box-shadow 0.25s;
+        }
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 18px rgba(0,0,0,0.35);
+        }
+    
+        .input-group { margin-bottom: 1.5rem; }
+    
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: #d1d5db;
+        }
+    
+        input {
+            width: 100%;
+            padding: 0.85rem;
+            border: 1px solid var(--border-color);
+            border-radius: 0.75rem;
+            background-color: #111827;
+            color: var(--text-color);
+            font-size: 1rem;
+            transition: border-color 0.25s, box-shadow 0.25s;
+            direction: ltr;
+        }
+        input:focus {
+            outline: none;
+            border-color: var(--secondary-color);
+            box-shadow: 0 0 0 3px rgba(59,130,246,0.35);
+        }
+    
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.8rem 1.5rem;
+            font-size: 1rem;
+            font-weight: 600;
+            border: none;
+            border-radius: 0.75rem;
+            cursor: pointer;
+            transition: all 0.25s;
+            margin-left: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+    
+        .btn-primary { background-color: var(--secondary-color); color: white; }
+        .btn-primary:hover { background-color: #2563eb; transform: translateY(-2px); }
+    
+        .btn-telegram { background-color: #0088cc; color: white; }
+        .btn-telegram:hover { background-color: #0077aa; transform: translateY(-2px); }
+    
+        .btn-addon { background-color: #a3e635; color: #111; }
+        .btn-addon:hover { background-color: #84cc16; }
+    
+        .btn-download { background-color: #10b981; color: white; }
+        .btn-download:hover { background-color: #059669; }
+    
+        .btn-check-half { background-color: #f59e0b; color: white; }
+        .btn-check-half:hover { background-color: #d97706; }
+    
+        .btn-switch { background-color: var(--btn-secondary-bg); color: white; }
+        .btn-switch:hover { background-color: var(--btn-secondary-hover-bg); }
+    
+        .btn i { margin-left: 0.5rem; }
+    
+        .result {
+            margin-top: 1.5rem;
+            padding: 1.2rem;
+            border-radius: 0.75rem;
+            border: 1px solid var(--border-color);
+            word-break: break-word;
+            background-color: var(--card-background);
+            position: relative;
+        }
+    
+        .copy-btn {
+            position: absolute;
+            left: 1rem;
+            top: 1rem;
+            background-color: var(--secondary-color);
+            color: white;
+            border: none;
+            border-radius: 0.5rem;
+            padding: 0.3rem 0.7rem;
+            cursor: pointer;
+            font-size: 0.85rem;
+        }
+        .copy-btn:hover { background-color: #2563eb; }
+    
+        .success { color: var(--success-color); margin-top: 0.5rem; animation: fadeIn 0.5s ease-out; }
+        .error { color: var(--error-color); margin-top: 0.5rem; animation: fadeIn 0.5s ease-out; }
+    
+        .loader {
+            border: 4px solid #1f2937;
+            border-radius: 50%;
+            border-top: 4px solid var(--secondary-color);
+            width: 32px;
+            height: 32px;
+            animation: spin 1s linear infinite;
+            margin: 1rem auto;
+        }
+    
+        footer {
+            text-align: center;
+            padding: 1rem;
+            font-size: 0.85rem;
+            color: #9ca3af;
+        }
+    
+        .info-box {
+            background-color: rgba(59,130,246,0.08);
+            border-right: 4px solid var(--secondary-color);
+            margin: 1.5rem 0;
+            padding: 1rem;
+            border-radius: 0.75rem;
+        }
+    
+        .info-box a {
+            color: var(--secondary-color);
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .info-box a:hover { text-decoration: underline; }
+    
+        .theme-toggle {
+            position: fixed;
+            bottom: 2rem;
+            left: 2rem;
+            background-color: var(--secondary-color);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 52px;
+            height: 52px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.4);
+            transition: all 0.25s;
+            z-index: 1000;
+        }
+        .theme-toggle:hover { background-color: #2563eb; transform: scale(1.08); }
+    
+        #popup-box { display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.7); justify-content:center; align-items:center; z-index:9999; }
+        #popup-box .popup-content {
+            background: var(--popup-bg);
+            color: var(--popup-text);
+            max-width:600px;
+            width:90%;
+            padding:30px;
+            border-radius:1rem;
+            line-height:1.8;
+            position:relative;
+            box-shadow:0 0 25px rgba(0,0,0,0.45);
+            max-height:80vh;
+            overflow-y:auto;
+        }
+        #popup-box .popup-content h2 { color: var(--secondary-color); }
+        #popup-box .close-btn {
+            position:absolute;
+            top: 6px;
+            left: 16px;
+            background:none;
+            border:none;
+            font-size: 30px;
+            cursor:pointer;
+            color: #9ca3af;
+        }
+    
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        @keyframes slideUp { from { transform: translateY(20px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+    
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 1.8rem; }
+            .card { padding: 1.5rem; }
+            .btn { width: 100%; margin-left: 0; }
+            .theme-toggle { bottom: 1rem; left: 1rem; width: 44px; height: 44px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+
+        <div class="card">
+            <div class="input-group">
+                <label for="link">لینک دانلود را وارد کنید:</label>
+                <input type="text" id="link" placeholder="https://example.com/file.zip">
+            </div>
+            <div>
+                <button class="btn btn-primary" onclick="generateLink()">
+                    <i class="fas fa-link"></i> تولید لینک نیم‌بها
+                </button>
+                <button class="btn btn-telegram" onclick="openTelegramBot()">
+                    <i class="fab fa-telegram-plane"></i> کانال تلگرام
+                </button>
+                <a href="https://github.com/SurenaMHZ/NimbahaDownloader" class="chrome-btn">
+                    <button class="btn btn-addon">
+                        <i class="fab fa-chrome"></i> افزونه Chrome و Edge
+                    </button>
+                </a>
+            </div>
+            <div id="loader" class="loader" style="display: none;"></div>
+            <div id="result" class="result" style="display: none;">
+                <button class="copy-btn" onclick="copyToClipboard()">
+                    <i class="fas fa-copy"></i>
+                </button>
+                <strong>لینک نیم‌بها:</strong>
+                <div id="generated-link"></div>
+                <button class="btn btn-download" onclick="downloadLink()" style="margin-top: 1rem;">
+                    <i class="fas fa-download"></i> دانلود
+                </button>
+                <button class="btn btn-check-half" onclick="checkHalfPrice()" style="margin-top: 1rem;">
+                    <i class="fas fa-check"></i> بررسی نیم‌بها
+                </button>
+                <div id="success-message" class="success" style="display: none;">
+                    <i class="fas fa-check-circle"></i> لینک با موفقیت کپی شد!
+                </div>
+            </div>
+            <div id="error" class="error" style="display: none;"></div>
+            <div class="info-box">
+                <p>در صورتی که شرکت خدمات دهنده اینترنت‌تان پایبند قوانین نیست؛ شکایت خود را در <a href="https://195.cra.ir" target="_blank" >سازمان تنظیم مقررات و ارتباطات رادیویی</a> ثبت کنید.</p>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>سرویس نیم بها کاملا رایگان برای تمام مردم ایران زمین❤️ </p>
+    </footer>
+
+
+    <div id="popup-box">
+        <div class="popup-content">
+            <button class="close-btn" onclick="document.getElementById('popup-box').style.display='none'">&times;</button>
+        </div>
+    </div>
+
+</body>
+</html>

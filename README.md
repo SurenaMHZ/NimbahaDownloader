@@ -17,8 +17,8 @@
 
 فایل اکستنشن را از قسمت ریلیز ها یا از دکمه پایین دانلود کنید. 
 <p align="center">
-  <a href="https://github.com/SurenaMHZ/NimbahaDownloader/releases/download/untagged-3b42743dd6fd96ebd3db/nimbaha.zip">
-    <img src="https://img.shields.io/badge/⬇️%20Download%20Extension-file.zip-blue?style=for-the-badge" alt="Download Extension">
+  <a href="https://github.com/SurenaMHZ/NimbahaDownloader/releases/download/untagged-3a99b7272685e709be00/nimbaha.zip">
+    <img src="https://img.shields.io/badge/⬇️%20Download%20Extension-nimbaha.zip-blue?style=for-the-badge" alt="Download Extension">
   </a>
 </p>
 
